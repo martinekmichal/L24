@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+<h1>{{ object.meno }}</h1>
+    <p><strong>Meno:</strong> {{ object.meno }}</p>
+    <p><strong>Email:</strong> {{ object.email }}</p>
+    <p><strong>Cislo:</strong> {{ object.cislo }}</p>
+    <a href="{% url 'kontakt_edit' kontakt.pk %}">Edituj</a>
+    <a href="{% url 'kontakt_delete' kontakt.pk %}">Smazat</a>
+    <a href="{% url 'kontakt_list' %}">ZPET</a>
+{% endblock %}

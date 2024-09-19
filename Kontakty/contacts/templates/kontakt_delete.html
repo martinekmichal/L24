@@ -1,0 +1,14 @@
+{% extends "master.html" %}
+
+{% block title %}
+Potvrzení smazání
+{% endblock %}
+
+{% block content %}
+<h1>Opravdu chcete smazat kontakt? "{{ kontakt.meno }}"?</h1>
+<form method="post">
+    {% csrf_token %}
+    <button type="submit">Ano, smaž</button>
+    <a href="{% url 'kontakt_list' %}">Zpět</a>
+</form>
+{% endblock %}

@@ -1,4 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from .forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 def home_page(request):
@@ -9,3 +12,18 @@ def about_page(request):
 
 def contacts_page(request):
     return render(request, "contacts.html")
+
+@login_required
+def profile_page(request):
+    return render(request, 'profile.html')
+
+def register_page(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+
+    return render(request,
+                  'register.html',
+                  {'form': UserRegisterForm()})

@@ -1,0 +1,20 @@
+{% extends "master.html" %}
+
+
+{% block title %}
+Home
+{% endblock %}
+
+
+{% block content %}
+<h1>kontakt List</h1>
+    <a href="{% url 'kontakt_create' %}">Pridej kontakt</a>
+    <ul>
+        {% for kontakt in object_list %}
+            <li>
+                <a href="{% url 'kontakt_detail' kontakt.pk %}">{{ kontakt.meno }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'kontakt_create' %}">Pridej kontakt</a>
+{% endblock %}
