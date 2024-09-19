@@ -1,9 +1,9 @@
 from django.urls import reverse_lazy
-from django.views.generic import ListView, DetailView, CreateView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import kontakt
 from .forms import KontaktForm
-from django.views.generic import DeleteView
-from django.views.generic import UpdateView
+
+
 
 
 class KontaktListView(ListView):
