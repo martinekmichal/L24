@@ -5,6 +5,9 @@ from .forms import KontaktForm
 from django.http import JsonResponse, FileResponse
 from django.conf import settings
 import os
+from .mixins import LoggingMixin
+
+
 
 def my_json(request):
     data = {
@@ -27,9 +30,13 @@ def my_image_view(request):
     response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename='image.jpg')
     return response
 
-class KontaktListView(ListView):
+class KontaktListView(ListView, LoggingMixin):
     model = kontakt
     template_name = 'kontakt_list.html'
+
+    def get(self, request, *args, **kwargs):
+        self.log_action('View')
+        return super().get(request, *args, **kwargs)
 
 class KontaktDetailView(DetailView):
     model = kontakt
@@ -46,8 +53,12 @@ class KontaktDeleteView(DeleteView):
     template_name = 'kontakt_delete.html'
     success_url = reverse_lazy('kontakt_list')
 
-class KontaktUpdateView(UpdateView):
+class KontaktUpdateView(UpdateView, LoggingMixin):
     model = kontakt
     form_class = KontaktForm
     template_name = 'kontakt_edit.html'
     success_url = reverse_lazy('kontakt_list')
+
+    def form_valid(self, form):
+        self.log_action('Update')
+        return super().form_valid(form)
