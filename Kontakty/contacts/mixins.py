@@ -7,4 +7,4 @@ class LoggingMixin:
         #print(f"{action} action performed at {datetime.now()}")
         with open('media/file/test.txt', 'a', ) as f:
             f.write(f"{action} action performed at {datetime.now()}\n")
-            
+

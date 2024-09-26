@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="163214c8-0ec0-45e6-85cc-767649785c39" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Kontakty/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/Kontakty/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kontakty/Kontakty/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/Kontakty/Kontakty/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kontakty/contacts/mixins.py" beforeDir="false" afterPath="$PROJECT_DIR$/Kontakty/contacts/mixins.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
