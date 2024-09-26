@@ -2,9 +2,30 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import kontakt
 from .forms import KontaktForm
+from django.http import JsonResponse, FileResponse
+from django.conf import settings
+import os
 
+def my_json(request):
+    data = {
+        'name': 'John Doe',
+        'age': 'New York'
+    }
+    return JsonResponse(data)
 
+def my_file_view(request):
+    #file_path = os.path.join('path', 'to', 'your', 'file.pdf')
+    filename = "test.txt"
+    file_path = os.path.join(settings.MEDIA_ROOT, 'file', filename)
+    response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename='file.txt')
+    return response
 
+def my_image_view(request):
+    #file_path = os.path.join('path', 'to', 'your', 'file.pdf')
+    filename = "snehulak.jpg"
+    file_path = os.path.join(settings.MEDIA_ROOT, 'img', filename)
+    response = FileResponse(open(file_path, 'rb'), as_attachment=True, filename='image.jpg')
+    return response
 
 class KontaktListView(ListView):
     model = kontakt
