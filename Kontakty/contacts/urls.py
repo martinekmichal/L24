@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path, re_path
 from .views import *
 
 urlpatterns = [
@@ -10,4 +10,5 @@ urlpatterns = [
     path("json/", my_json, name="json"),
     path("download/", my_file_view, name="file_view"),
     path("download_img/",my_image_view, name="img_view"),
+    path("search_kontakt/", KontaktSearchForm, name="search_kontakt"),
 ]

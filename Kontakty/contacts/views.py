@@ -1,13 +1,27 @@
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from .models import kontakt
-from .forms import KontaktForm
+from .forms import KontaktForm, KontaktSearchForm
 from django.http import JsonResponse, FileResponse
 from django.conf import settings
 import os
 from .mixins import LoggingMixin
+from django.shortcuts import render
 
 
+
+
+def search_kontakt(request):
+    if request.method == 'POST':
+        form = KontaktSearchForm(request.POST)
+        if form.is_valid():
+            kontakt_name = form.cleaned_data['Kontakt_name']
+            results = kontakt.objects.filter(name__icontains=kontakt_name)
+            return render(request, 'search_kontakt.html', {'form': form, 'results': results})
+    else:
+        form = KontaktSearchForm()
+    results = kontakt.objects.all()
+    return render(request, 'search_kontakt.html', {'form': form, 'results': results})
 
 def my_json(request):
     data = {
@@ -62,3 +76,5 @@ class KontaktUpdateView(UpdateView, LoggingMixin):
     def form_valid(self, form):
         self.log_action('Update')
         return super().form_valid(form)
+
+

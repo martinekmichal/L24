@@ -1,0 +1,18 @@
+{% extends "master.html" %}
+{% block content %}
+<h1>Search Results</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Hledej</button>
+    </form>
+    <h2>Results:</h2>
+    <ul>
+        {% for Product in results %}
+            <li>{{ Product.meno }} - {{ Product.cislo }}</li>
+        {% empty %}
+            <li>Nenalezeno!!!</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
