@@ -1,0 +1,12 @@
+.contact-header {
+
+  background-color: #f1f1f1;  /* Světle šedé pozadí */
+  color: #333;                 /* Tmavě šedý text */
+  text-align: center;          /* Zarovnání na střed */
+  padding: 20px;               /* Vnitřní okraje pro lepší vzhled */
+  font-family: 'Arial', sans-serif; /* Moderní font */
+  font-size: 2.5em;            /* Velikost textu */
+  border-radius: 8px;          /* Zaoblené rohy */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Lehké stínování */
+  margin-top: 20px;            /* Mezera nahoře */
+}
